@@ -1,0 +1,28 @@
+name: 공통
+
+on:
+  workflow_call:
+    secrets:
+      VERCEL_TOKEN:
+        required: true
+      VERCEL_ORG_ID:
+        required: true
+      VERCEL_PROJECT_ID:
+        required: true
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  deploy:
+    # if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    name: 'Vercel 배포'
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Vercel CLI 설치
+        run: npm install --global vercel@latest
+      - name: 프로젝트를 Vercel에 배포
+        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}

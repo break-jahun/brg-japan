@@ -1,0 +1,16 @@
+{
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "i18n-ally.displayLanguage": "tw",
+  "i18n-ally.fullReloadOnChanged": true,
+  "i18n-ally.annotationMaxLength": 200,
+  "i18n-ally.sortKeys": true,
+  "i18n-ally.keepFulfilled": true,
+  "i18n-ally.localesPaths": ["common/translation"],
+  "i18n-ally.keystyle": "nested",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
