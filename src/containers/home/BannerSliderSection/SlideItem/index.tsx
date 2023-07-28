@@ -39,13 +39,29 @@ function SlideItem() {
           <CardImageInBanner src="/images/home/banners/firstbanner/card2.png" />
           <CardImageInBanner src="/images/home/banners/firstbanner/card3.png" />
           <Box
+            display="flex"
             position="absolute"
             top={{ xs: '-24px', sm: '-34px' }}
             right={{ xs: '-24px', sm: '-34px' }}
             zIndex={100}
             width="109px"
             height="109px"
+            justifyContent="center"
+            alignItems="center"
           >
+            <Box
+              color="#FFF"
+              zIndex={101}
+              lineHeight="19.235px"
+              letterSpacing="0.401px"
+            >
+              <Typography sx={{ fontSize: '14.426px', fontWeight: 400 }}>
+                レギュラー
+              </Typography>
+              <Typography sx={{ fontSize: '17px', fontWeight: 700 }}>
+                2,480円
+              </Typography>
+            </Box>
             <Image
               priority
               alt="가격스티커이미지"

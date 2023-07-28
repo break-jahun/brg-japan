@@ -1,13 +1,11 @@
 import { Box } from '@mui/material';
 import BannerSliderPagination from 'brg-japan/containers/home/BannerSliderSection/BannerSliderPagination';
 import SlideItem from 'brg-japan/containers/home/BannerSliderSection/SlideItem';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import SwiperCore from 'swiper';
 import { Swiper, SwiperClass, SwiperSlide, useSwiper } from 'swiper/react';
 import { v4 } from 'uuid';
 import 'swiper/css';
-
-const SlidesData = [<SlideItem />];
 
 function BannerSliderSection() {
   const [swiper, setSwiper] = useState<SwiperCore>();
@@ -24,6 +22,8 @@ function BannerSliderSection() {
   const handleSlideChange = (swiperParam: SwiperClass) => {
     setCurrentPage(swiperParam.realIndex);
   };
+
+  const SlidesData = useMemo(() => [<SlideItem />], []);
 
   return (
     <Box position="relative">
