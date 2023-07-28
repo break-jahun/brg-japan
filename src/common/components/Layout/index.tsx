@@ -10,7 +10,7 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
   return (
-    <Box>
+    <Box position="relative">
       <NavigationBar />
       <main>{children}</main>
       <Footer />

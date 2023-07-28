@@ -6,45 +6,60 @@ import useIsDesktop from 'brg-japan/modules/hooks/useIsDesktop';
 import useMenuData from 'brg-japan/modules/hooks/useMenuData';
 import Link from 'next/link';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useState } from 'react';
+import MobileNavigationMenu from 'brg-japan/components/Layout/MobileNavigationMenu';
 
 function NavigationBar() {
   const isDesktop = useIsDesktop();
 
   const menuData = useMenuData();
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleToggleMobileMenu = () => {
+    setMobileMenuOpen((prev) => !prev);
+  };
+
   return (
-    <HStack
-      width="100%"
-      position="fixed"
-      zIndex={100}
-      top={0}
-      left={0}
-      height="64px"
-      bgcolor="rgba(0, 0, 0, 0.50)"
-      boxShadow="0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)"
-      padding={{ xs: '18px 16px', sm: '18px 32px' }}
-      justifyContent="space-between"
-    >
-      <Box>
-        <Link href="/" passHref>
-          <BrgLogo />
-        </Link>
-      </Box>
-      {isDesktop && (
-        <HStack gap="81px" color="#E0E0E0">
-          {menuData.map((item) => (
-            <Link key={item.href} href={item.href} passHref>
-              <MenuText>{item.name}</MenuText>
-            </Link>
-          ))}
-        </HStack>
-      )}
-      {!isDesktop && (
-        <HamburgerButton>
-          <MenuIcon color="inherit" />
-        </HamburgerButton>
-      )}
-    </HStack>
+    <>
+      <HStack
+        width="100%"
+        position="fixed"
+        zIndex={101}
+        top={0}
+        left={0}
+        height="64px"
+        bgcolor={mobileMenuOpen ? 'white' : 'rgba(0, 0, 0, 0.50)'}
+        boxShadow="0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)"
+        padding={{ xs: '18px 16px', sm: '18px 32px' }}
+        justifyContent="space-between"
+      >
+        <Box>
+          <Link href="/" passHref>
+            <BrgLogo color={mobileMenuOpen ? 'black' : 'white'} />
+          </Link>
+        </Box>
+        {isDesktop && (
+          <HStack gap="81px" color="#E0E0E0">
+            {menuData.map((item) => (
+              <Link key={item.href} href={item.href} passHref>
+                <MenuText>{item.name}</MenuText>
+              </Link>
+            ))}
+          </HStack>
+        )}
+        {!isDesktop && (
+          <HamburgerButton onClick={handleToggleMobileMenu}>
+            <MenuIcon
+              sx={{
+                color: mobileMenuOpen ? 'black' : 'inherit',
+              }}
+            />
+          </HamburgerButton>
+        )}
+      </HStack>
+      {!isDesktop && <MobileNavigationMenu open={mobileMenuOpen} />}
+    </>
   );
 }
 

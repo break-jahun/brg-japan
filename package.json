@@ -31,6 +31,7 @@
     "dayjs": "^1.10.7",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^16.1.0",
+    "framer-motion": "^10.14.0",
     "fs": "^0.0.1-security",
     "glob": "^8.0.3",
     "google-map-react": "^2.2.1",
