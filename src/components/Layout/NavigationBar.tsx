@@ -8,6 +8,7 @@ import Link from 'next/link';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import MobileNavigationMenu from 'brg-japan/components/Layout/MobileNavigationMenu';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 
 function NavigationBar() {
   const isDesktop = useIsDesktop();
@@ -15,14 +16,22 @@ function NavigationBar() {
   const menuData = useMenuData();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [logoOn, setLogoOn] = useState(false);
 
   const handleToggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
+    if (mobileMenuOpen) {
+      setTimeout(() => {
+        setLogoOn((prev) => !prev);
+      }, 500);
+    } else {
+      setLogoOn((prev) => !prev);
+    }
   };
 
   return (
     <>
-      <HStack
+      <NavigationBarContainer
         width="100%"
         position="fixed"
         zIndex={101}
@@ -33,10 +42,16 @@ function NavigationBar() {
         boxShadow="0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)"
         padding={{ xs: '18px 16px', sm: '18px 32px' }}
         justifyContent="space-between"
+        sx={{
+          ...(!mobileMenuOpen && {
+            transitionDelay: '500ms',
+            transitionProperty: 'background-color',
+          }),
+        }}
       >
         <Box>
           <Link href="/" passHref>
-            <BrgLogo color={mobileMenuOpen ? 'black' : 'white'} />
+            <BrgLogo color={logoOn ? 'black' : 'white'} />
           </Link>
         </Box>
         {isDesktop && (
@@ -53,15 +68,21 @@ function NavigationBar() {
             <MenuIcon
               sx={{
                 color: mobileMenuOpen ? 'black' : 'inherit',
+                ...(!mobileMenuOpen && {
+                  transitionDelay: '500ms',
+                  transitionProperty: 'color',
+                }),
               }}
             />
           </HamburgerButton>
         )}
-      </HStack>
+      </NavigationBarContainer>
       {!isDesktop && <MobileNavigationMenu open={mobileMenuOpen} />}
     </>
   );
 }
+
+const NavigationBarContainer = styled(motion(HStack))({});
 
 const MenuText = styled(Typography)({
   fontSize: '16px',
