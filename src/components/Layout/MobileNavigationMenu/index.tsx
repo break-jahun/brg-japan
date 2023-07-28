@@ -67,7 +67,7 @@ function MobileNavigationMenu(props: Props) {
 }
 
 const MenuBox = styled(motion(Box))({
-  position: 'absolute',
+  position: 'fixed',
   width: '100%',
   top: 0,
   background: 'rgb(245, 245, 245)',
