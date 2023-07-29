@@ -9,7 +9,7 @@ function BrgHowToUseSection() {
   return (
     <VStack
       paddingY={{ xs: '40px', sm: '80px' }}
-      paddingX={{ xs: '12px', sm: '0px' }}
+      paddingX={{ xs: '16px', sm: '0px' }}
       maxWidth="574px"
       margin="auto"
       gap="40px"
