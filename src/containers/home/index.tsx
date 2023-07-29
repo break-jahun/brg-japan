@@ -6,6 +6,7 @@ import BrgHowToUseSection from 'brg-japan/containers/home/BrgHowToUseSection';
 import EventBannerSection from 'brg-japan/containers/home/EventBannerSection';
 import PartnerShopList from 'brg-japan/containers/home/PartnerShopList';
 import PriceInfoSection from 'brg-japan/containers/home/PriceInfoSection';
+import SocialSnsSection from 'brg-japan/containers/home/SocialSnsSection';
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
       <PriceInfoSection />
       <PartnerShopList />
       <EventBannerSection />
+      <SocialSnsSection />
     </VStack>
   );
 }
