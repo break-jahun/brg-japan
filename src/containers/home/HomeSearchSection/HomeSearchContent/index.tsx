@@ -73,7 +73,9 @@ function HomeSearchContent(props: Props) {
               </Box>
               <Box>
                 <ValueText>
-                  {dayjs(estimatedGradingCompleteDate).format('YYYY.MM.DD')}
+                  {estimatedGradingCompleteDate
+                    ? dayjs(estimatedGradingCompleteDate).format('YYYY.MM.DD')
+                    : '-'}
                 </ValueText>
               </Box>
             </Box>
