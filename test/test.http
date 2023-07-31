@@ -1,0 +1,2 @@
+GET https://gate.break.co.kr/brg/api/admin/gradings/v2?sortBy=id&sortOrder=DESC&offset=0&limit=10&searchWord=30006&searchField=id HTTP/1.1
+Cookie: aacc=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibWJFbWFpbCI6ImFkbWluIiwibWJUeXBlIjoiQURNSU4iLCJhZG1pbkdyYWRlIjowLCJpYXQiOjE2OTA3NzI4OTcsImV4cCI6MTY5MDg1OTI5N30.1CVpT4OPINQgzpi2MvfKLakDKti35z4m_OggfhCl4Dc

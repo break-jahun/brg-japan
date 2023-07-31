@@ -3,3 +3,8 @@ export type ResponseType<T> = {
   message: string;
   data: T;
 };
+
+export type ResponseDataRowsType<T> = {
+  count: number;
+  rows: T[];
+};
