@@ -53,7 +53,6 @@ function HomeSearchSection() {
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    console.log('event.key', event.key);
     if (event.key === 'Enter') {
       handleSearch();
       if (inputRef?.current) {

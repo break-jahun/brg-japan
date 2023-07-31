@@ -16,7 +16,7 @@ function Home() {
       <BrgHowToUseSection />
       <PriceInfoSection />
       <PartnerShopList />
-      <EventBannerSection />
+      {/* <EventBannerSection /> */}
       <SocialSnsSection />
       <GoBrgGradingSection />
     </VStack>

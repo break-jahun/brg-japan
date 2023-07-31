@@ -20,7 +20,7 @@ function SlideItem() {
         <TitleText>brg, 日本サービス開始</TitleText>
         <VStack marginTop="10px">
           <SubtitleText>
-            BRGは精密機器と技術力を組み合わせたグレーディングで{' '}
+            brgは精密機器と技術力を組み合わせたグレーディングで{' '}
           </SubtitleText>
           <SubtitleText>
             お持ちのカードのコレクション価値を高めます。

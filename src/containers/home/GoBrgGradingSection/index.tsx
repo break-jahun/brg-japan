@@ -22,7 +22,7 @@ function GoBrgGradingSection() {
         <GuideText>brgは初めてですか？採点について学びましょう。</GuideText>
       </VStack>
       <Link href="/grading" passHref>
-        <GuideButton>BRGグレーディング？</GuideButton>
+        <GuideButton>brgグレーディング？</GuideButton>
       </Link>
     </Box>
   );

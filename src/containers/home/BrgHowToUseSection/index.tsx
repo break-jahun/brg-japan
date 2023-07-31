@@ -17,7 +17,7 @@ function BrgHowToUseSection() {
       <HomeSharedTitle>ご利用方法</HomeSharedTitle>
       <VStack gap="20px">
         <SharedSentence number="1">
-          近くのBRGパートナーショップを探す。
+          近くのbrgパートナーショップを探す。
         </SharedSentence>
         <SharedSentence number="2">
           パートナーショップを訪問し、グレーディングするカードを預ける。
@@ -25,7 +25,7 @@ function BrgHowToUseSection() {
         <SharedSentence number="3">
           進捗状況は電話、ツイッターでお問い合わせください。
           <br />
-          (配送追跡番号でBRGホームページで確認可能)
+          (配送追跡番号でbrgホームページで確認可能)
         </SharedSentence>
         <SharedSentence number="4">
           配送が完了したら、パートナーショップに訪問してカードを受け取ります。

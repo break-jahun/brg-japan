@@ -28,16 +28,6 @@ function SocialSnsSection() {
             height="100%"
           />
         </Box>
-        {isDesktop && (
-          <Box flex={1}>
-            <iframe
-              title="brgcard twitter"
-              src="https://snapwidget.com/embed/1016072"
-              width="100%"
-              height="100%"
-            />
-          </Box>
-        )}
       </HStack>
     </VStack>
   );
