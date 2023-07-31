@@ -27,7 +27,7 @@ function DeskTopPartnerShopList() {
       <HStack gap="24px">
         <Box flex={1} />
         {PartnerShopData.slice(6, 8).map((item) => (
-          <Box flex={2}>
+          <Box key={item.image} flex={2}>
             <PartnerShopInfoCard
               key={item.image}
               address={item.address}

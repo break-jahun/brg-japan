@@ -1,3 +1,3 @@
 export type HomeQueryParamType = {
-  search?: string;
+  q?: string;
 };

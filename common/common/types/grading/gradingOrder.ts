@@ -71,20 +71,20 @@ export const GRADING_ORDER = {
 };
 
 export type GradingOrderStatus =
-  typeof GRADING_ORDER.STATUS[keyof typeof GRADING_ORDER.STATUS];
+  (typeof GRADING_ORDER.STATUS)[keyof typeof GRADING_ORDER.STATUS];
 export type GradingOrderProcessingStatus =
-  | typeof GRADING_ORDER.PROCESSING_STATUS[keyof typeof GRADING_ORDER.PROCESSING_STATUS];
+  | (typeof GRADING_ORDER.PROCESSING_STATUS)[keyof typeof GRADING_ORDER.PROCESSING_STATUS];
 
 export type GradingSubmitType =
-  typeof GRADING_ORDER.SUBMIT_TYPE[keyof typeof GRADING_ORDER.SUBMIT_TYPE];
+  (typeof GRADING_ORDER.SUBMIT_TYPE)[keyof typeof GRADING_ORDER.SUBMIT_TYPE];
 export type GradingOrderType =
-  typeof GRADING_ORDER.TYPE[keyof typeof GRADING_ORDER.TYPE];
+  (typeof GRADING_ORDER.TYPE)[keyof typeof GRADING_ORDER.TYPE];
 export type GradingOrderShippingMethod =
-  typeof GRADING_ORDER.SHIPPING_METHOD[keyof typeof GRADING_ORDER.SHIPPING_METHOD];
+  (typeof GRADING_ORDER.SHIPPING_METHOD)[keyof typeof GRADING_ORDER.SHIPPING_METHOD];
 export type CurrencyType =
-  typeof GRADING_ORDER.CURRENCY_TYPE[keyof typeof GRADING_ORDER.CURRENCY_TYPE];
+  (typeof GRADING_ORDER.CURRENCY_TYPE)[keyof typeof GRADING_ORDER.CURRENCY_TYPE];
 export type PhotoLimit =
-  typeof GRADING_ORDER.PHOTO_LIMIT[keyof typeof GRADING_ORDER.PHOTO_LIMIT];
+  (typeof GRADING_ORDER.PHOTO_LIMIT)[keyof typeof GRADING_ORDER.PHOTO_LIMIT];
 export type BoxType = 'IN' | 'OUT'; // 한국->대만 IN, 대만->한국 OUT
 export type BoxStatus = 'AT_PICKUP' | 'IN_TRANSIT' | 'DELIVERED'; // 발송전,배송중,수령완료
 export type NewGradingOrderType = 'REG' | 'EXP' | 'BULK' | 'SAMPLE'; // 신규 주문 API 주문 타입

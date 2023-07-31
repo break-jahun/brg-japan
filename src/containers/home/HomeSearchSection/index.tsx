@@ -10,80 +10,76 @@ import useGetGradingOrderById from 'brg-japan/containers/home/HomeSearchSection/
 import { useRouter } from 'next/router';
 import { HomeQueryParamType } from 'brg-japan/containers/home/shared/queryparam';
 import useGetRouterQuery from 'brg-japan/modules/hooks/useGetRouterQuery';
+import { VStack } from '@/common/components/VStack';
+import HomeSearchContent from 'brg-japan/containers/home/HomeSearchSection/HomeSearchContent';
+import useIsDesktop from 'brg-japan/modules/hooks/useIsDesktop';
 
 function HomeSearchSection() {
-  const query = useGetRouterQuery<HomeQueryParamType>();
-  const search = query?.search;
-
-  const router = useRouter();
-
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { data, isLoading, isFetching } = useGetGradingOrderById(
-    Number(search),
-    {
-      enabled: !!search,
-    }
-  );
-
   const [orderNumber, setOrderNumber] = useState('');
+  const [q, setQ] = useState('');
+
+  const { data, isLoading, isFetching } = useGetGradingOrderById(Number(q), {
+    enabled: q !== '',
+  });
+
+  const isDesktop = useIsDesktop();
 
   const handleChangeOrderNumber = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    if (/[0-9]+$/.test(event.target.value)) {
+    if (event.target.value === '' || /[0-9]+$/.test(event.target.value)) {
       setOrderNumber(event.target.value);
     }
   };
 
   const handleSearch = () => {
-    const newQuery =
-      orderNumber === ''
-        ? {}
-        : ({ ...query, search: orderNumber } as HomeQueryParamType);
-    router.replace(
-      router.asPath,
-      {
-        query: newQuery,
-      },
-      {
-        scroll: false,
-      }
-    );
+    setQ(orderNumber);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
       handleSearch();
-      if (inputRef?.current) {
+      if (!isDesktop && inputRef?.current) {
         inputRef.current.blur();
       }
     }
   };
 
   return (
-    <HStack alignItems="center" gap="8px">
-      <Box
-        width={{ xs: '80px', sm: '120px' }}
-        display="flex"
-        alignItems="center"
-      >
-        <InputLogo />
-      </Box>
-      <HStack flex={1} borderBottom="1px solid #000">
-        <CustomInput
-          ref={inputRef}
-          type="text"
-          placeholder="トラッキング番号の入力"
-          value={orderNumber}
-          onChange={handleChangeOrderNumber}
-          onKeyDown={handleKeyDown}
-        />
-        <IconButton onClick={handleSearch}>
-          <SearchIcon />
-        </IconButton>
+    <VStack gap="16px">
+      <HStack alignItems="center" gap="8px">
+        <Box
+          width={{ xs: '80px', sm: '120px' }}
+          display="flex"
+          alignItems="center"
+        >
+          <InputLogo />
+        </Box>
+        <HStack flex={1} borderBottom="1px solid #000">
+          <CustomInput
+            ref={inputRef}
+            type="text"
+            placeholder="トラッキング番号の入力"
+            value={orderNumber}
+            onChange={handleChangeOrderNumber}
+            onKeyDown={handleKeyDown}
+          />
+          <IconButton onClick={handleSearch}>
+            <SearchIcon />
+          </IconButton>
+        </HStack>
       </HStack>
-    </HStack>
+
+      <HomeSearchContent
+        open={q !== ''}
+        isNoData={!data}
+        estimatedGradingCompleteDate={data?.estimatedGradingCompleteDate}
+        orderNumber={data?.id}
+        processingStatus={data?.gradingOrderProcessingStatus}
+      />
+    </VStack>
   );
 }
 

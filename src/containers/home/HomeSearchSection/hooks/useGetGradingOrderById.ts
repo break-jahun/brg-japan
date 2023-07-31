@@ -11,7 +11,7 @@ function useGetGradingOrderById(id: number, option?: Option) {
     sharedQueryKeys.gradingOrderById(id),
     () => getGradingOrderById(id),
     {
-      select: (result) => result.data?.rows?.[0],
+      select: (result) => result.data,
       enabled: option?.enabled ?? false,
     }
   );

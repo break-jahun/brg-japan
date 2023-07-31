@@ -8,6 +8,7 @@ import GoBrgGradingSection from 'brg-japan/containers/home/GoBrgGradingSection';
 import PartnerShopList from 'brg-japan/containers/home/PartnerShopList';
 import PriceInfoSection from 'brg-japan/containers/home/PriceInfoSection';
 import SocialSnsSection from 'brg-japan/containers/home/SocialSnsSection';
+import { useRouter } from 'next/router';
 
 function Home() {
   return (
