@@ -13,24 +13,19 @@ import Link from 'next/link';
 
 function PartnerShopList() {
   const isDesktop = useIsDesktop();
+
+  const isMobileAndTablet = useMediaQuery('(max-width:1032px)');
+
   return (
     <VStack
       paddingY="80px"
       alignItems="center"
       gap="24px"
-      width={{ xs: '100%', sm: '1032px' }}
+      width={isMobileAndTablet ? '100%' : '1032px'}
       margin="auto"
     >
       <HomeSharedTitle>パートナーショップ</HomeSharedTitle>
-      <Box
-        sx={{
-          ...(isDesktop && {
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr 1fr',
-            gap: '24px',
-          }),
-        }}
-      >
+      <Box>
         {isDesktop && <DeskTopPartnerShopList />}
         {!isDesktop && <MobilePartnerShopList />}
       </Box>

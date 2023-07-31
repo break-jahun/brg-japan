@@ -4,6 +4,7 @@ import { Button } from '@mui/base';
 import { Box, Typography, styled, useTheme } from '@mui/material';
 import useIsDesktop from 'brg-japan/modules/hooks/useIsDesktop';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function SlideItem() {
   return (
@@ -26,7 +27,9 @@ function SlideItem() {
           </SubtitleText>
         </VStack>
         <Box marginTop="20px">
-          <BannerCenterButton>パートナーショップを見る</BannerCenterButton>
+          <Link href="/partner-shop" passHref>
+            <BannerCenterButton>パートナーショップを見る</BannerCenterButton>
+          </Link>
         </Box>
         <HStack
           position="relative"

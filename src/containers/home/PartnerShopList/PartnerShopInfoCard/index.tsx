@@ -28,6 +28,10 @@ function PartnerShopInfoCard(props: Props) {
           width={193}
           height={128}
           alt="partnershop image"
+          style={{
+            objectFit: 'contain',
+            objectPosition: 'center',
+          }}
         />
         <VStack gap="8px" alignItems="center">
           <Name>{name}</Name>
