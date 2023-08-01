@@ -1,6 +1,6 @@
 import { HStack } from '@/common/components/HStack';
 import { Button } from '@mui/base';
-import { Box, Typography, styled } from '@mui/material';
+import { Box, IconButton, Typography, styled } from '@mui/material';
 import BrgLogo from 'brg-japan/components/Layout/BrgLogo';
 import useIsDesktop from 'brg-japan/modules/hooks/useIsDesktop';
 import useMenuData from 'brg-japan/modules/hooks/useMenuData';
@@ -45,6 +45,15 @@ function NavigationBar() {
       router.events.off('routeChangeStart', handleCloseMenu);
     };
   }, [handleCloseMenu, router.events]);
+
+  useEffect(() => {
+    const { body } = document;
+    if (mobileMenuOpen) {
+      body.style.overflow = 'hidden';
+    } else {
+      body.style.overflow = 'unset';
+    }
+  }, [mobileMenuOpen]);
 
   return (
     <>
@@ -95,6 +104,19 @@ function NavigationBar() {
         )}
       </NavigationBarContainer>
       {!isDesktop && <MobileNavigationMenu open={mobileMenuOpen} />}
+      {mobileMenuOpen && (
+        <Box
+          onClick={handleCloseMenu}
+          zIndex={2}
+          position="absolute"
+          width="100%"
+          top={0}
+          left={0}
+          height="100vh"
+          bgcolor="black"
+          sx={{ opacity: 0.36 }}
+        />
+      )}
     </>
   );
 }
@@ -109,7 +131,7 @@ const MenuText = styled(Typography)({
   letterSpacing: '0.15px',
 });
 
-const HamburgerButton = styled(Button)({
+const HamburgerButton = styled(IconButton)({
   color: '#E0E0E0',
 });
 
