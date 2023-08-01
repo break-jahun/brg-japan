@@ -26,7 +26,7 @@ function PriceInfoSection() {
               price="2,480円＋税"
               description={
                 <VStack>
-                  <Description>*最長30営業日</Description>
+                  <Description>*最長15営業日</Description>
                 </VStack>
               }
             />
@@ -37,8 +37,8 @@ function PriceInfoSection() {
               price="1,980円＋税"
               description={
                 <VStack>
-                  <DescriptionBold>*最低40枚</DescriptionBold>
-                  <Description>*最長90営業日</Description>
+                  <DescriptionBold>*最低50枚</DescriptionBold>
+                  <Description>*最長25営業日</Description>
                 </VStack>
               }
             />
