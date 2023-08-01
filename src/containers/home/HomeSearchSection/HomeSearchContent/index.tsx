@@ -9,8 +9,9 @@ type Props = {
   open: boolean;
   processingStatus?: GradingOrderProcessingStatus;
   orderNumber?: number;
-  estimatedGradingCompleteDate?: string;
   isNoData: boolean;
+  trackingNumOut?: string;
+  trackingNumIn?: string;
 };
 
 function HomeSearchContent(props: Props) {
@@ -18,9 +19,12 @@ function HomeSearchContent(props: Props) {
     open,
     processingStatus,
     orderNumber,
-    estimatedGradingCompleteDate,
     isNoData,
+    trackingNumIn,
+    trackingNumOut,
   } = props;
+
+  const orderLocation = getOrderLocation({ trackingNumIn, trackingNumOut });
 
   return (
     <AnimatePresence initial={false}>
@@ -44,7 +48,7 @@ function HomeSearchContent(props: Props) {
             <Box
               sx={{
                 display: 'grid',
-                gridTemplateColumns: '1fr 4fr 1fr',
+                gridTemplateColumns: '1fr 5fr',
                 '& > div': {
                   display: 'flex',
                   alignItems: 'center',
@@ -57,26 +61,15 @@ function HomeSearchContent(props: Props) {
                 <ColumnText>주문번호</ColumnText>
               </Box>
               <Box>
-                <ColumnText>그레이딩 진행상황</ColumnText>
+                <ColumnText>주문건 위치</ColumnText>
               </Box>
-              <Box>
-                <ColumnText>출고 예정일</ColumnText>
-              </Box>
-              <Divider />
               <Divider />
               <Divider />
               <Box>
                 <ValueText>{orderNumber}</ValueText>
               </Box>
               <Box>
-                <ValueText>{processingStatus}</ValueText>
-              </Box>
-              <Box>
-                <ValueText>
-                  {estimatedGradingCompleteDate
-                    ? dayjs(estimatedGradingCompleteDate).format('YYYY.MM.DD')
-                    : '-'}
-                </ValueText>
+                <ValueText>{orderLocation}</ValueText>
               </Box>
             </Box>
           )}
@@ -104,6 +97,22 @@ function ValueText({ children }: { children: React.ReactNode }) {
       {children}
     </Typography>
   );
+}
+
+function getOrderLocation({
+  trackingNumOut,
+  trackingNumIn,
+}: {
+  trackingNumIn?: string;
+  trackingNumOut?: string;
+}) {
+  if (!trackingNumIn && !trackingNumOut) {
+    return '집하지(입고)';
+  }
+  if (!!trackingNumIn && !!trackingNumOut) {
+    return '집하지(출고)';
+  }
+  return 'brg 그레이딩 센터';
 }
 
 export default HomeSearchContent;

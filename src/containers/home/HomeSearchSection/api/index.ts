@@ -13,6 +13,8 @@ export type GetGradingOrderByIdResponse = ResponseType<{
   gradingOrderProcessingStatus: GradingOrderProcessingStatus;
   id: number;
   estimatedGradingCompleteDate: string;
+  trackingNumIn?: string;
+  trackingNumOut?: string;
 }>;
 
 export async function getGradingOrderById(id: number) {

@@ -75,7 +75,6 @@ function HomeSearchSection() {
       <HomeSearchContent
         open={q !== ''}
         isNoData={!data}
-        estimatedGradingCompleteDate={data?.estimatedGradingCompleteDate}
         orderNumber={data?.id}
         processingStatus={data?.gradingOrderProcessingStatus}
       />
