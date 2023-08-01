@@ -1,9 +1,13 @@
 import { Box } from '@mui/material';
-import { PartnerShopData } from 'brg-japan/containers/home/PartnerShopList/shared/PartnershopData';
+import {
+  PartnerShopData,
+  PartnerShopDataType,
+} from 'brg-japan/containers/home/PartnerShopList/shared/PartnershopData';
 import { keyframes, styled } from '@mui/system';
 import { HStack } from '@/common/components/HStack';
 import PriceInfoCard from 'brg-japan/containers/home/PriceInfoSection/PriceInfoCard';
 import PartnerShopInfoCard from 'brg-japan/containers/home/PartnerShopList/PartnerShopInfoCard';
+import Link from 'next/link';
 
 const marquee = keyframes`
   from {
@@ -16,7 +20,13 @@ const marquee = keyframes`
   }
 `;
 
-function MobilePartnerShopList() {
+type Props = {
+  data: PartnerShopDataType[];
+};
+
+function MobilePartnerShopList(props: Props) {
+  const { data: partnerShopList } = props;
+
   return (
     <HStack width="100vw" position="relative" overflow="hidden">
       <Box
@@ -33,16 +43,18 @@ function MobilePartnerShopList() {
           animationName: `${marquee}`,
         }}
       >
-        {PartnerShopData.map((item) => (
-          <Box width="calc(100vw - 32px)">
-            <PartnerShopInfoCard
-              key={item.image}
-              address={item.address}
-              image={item.image}
-              name={item.name}
-              phone={item.phone}
-            />
-          </Box>
+        {partnerShopList.map((item) => (
+          <Link key={item.image} href={item.link} passHref target="_blank">
+            <Box width="calc(100vw - 32px)">
+              <PartnerShopInfoCard
+                key={item.image}
+                address={item.address}
+                image={item.image}
+                name={item.name}
+                phone={item.phone}
+              />
+            </Box>
+          </Link>
         ))}
       </Box>
     </HStack>

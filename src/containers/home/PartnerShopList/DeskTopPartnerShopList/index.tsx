@@ -2,9 +2,18 @@ import { HStack } from '@/common/components/HStack';
 import { VStack } from '@/common/components/VStack';
 import { Box } from '@mui/material';
 import PartnerShopInfoCard from 'brg-japan/containers/home/PartnerShopList/PartnerShopInfoCard';
-import { PartnerShopData } from 'brg-japan/containers/home/PartnerShopList/shared/PartnershopData';
+import {
+  PartnerShopData,
+  PartnerShopDataType,
+} from 'brg-japan/containers/home/PartnerShopList/shared/PartnershopData';
+import Link from 'next/link';
 
-function DeskTopPartnerShopList() {
+type Props = {
+  data: PartnerShopDataType[];
+};
+
+function DeskTopPartnerShopList(props: Props) {
+  const { data: partnerShopList } = props;
   return (
     <VStack gap="24px">
       <Box
@@ -14,20 +23,8 @@ function DeskTopPartnerShopList() {
           gap: '24px',
         }}
       >
-        {PartnerShopData.slice(0, 6).map((item) => (
-          <PartnerShopInfoCard
-            key={item.image}
-            address={item.address}
-            image={item.image}
-            name={item.name}
-            phone={item.phone}
-          />
-        ))}
-      </Box>
-      <HStack gap="24px">
-        <Box flex={1} />
-        {PartnerShopData.slice(6, 8).map((item) => (
-          <Box key={item.image} flex={2}>
+        {partnerShopList.map((item) => (
+          <Link key={item.image} href={item.link} passHref target="_blank">
             <PartnerShopInfoCard
               key={item.image}
               address={item.address}
@@ -35,10 +32,9 @@ function DeskTopPartnerShopList() {
               name={item.name}
               phone={item.phone}
             />
-          </Box>
+          </Link>
         ))}
-        <Box flex={1} />
-      </HStack>
+      </Box>
     </VStack>
   );
 }
