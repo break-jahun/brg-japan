@@ -3,6 +3,7 @@ import { Box, Typography, styled } from '@mui/material';
 import useMenuData from 'brg-japan/modules/hooks/useMenuData';
 import { AnimatePresence, motion, useCycle } from 'framer-motion';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 type Props = {
   open: boolean;
@@ -12,6 +13,8 @@ function MobileNavigationMenu(props: Props) {
   const { open } = props;
 
   const menu = useMenuData();
+
+  const router = useRouter();
 
   return (
     <AnimatePresence>
@@ -46,7 +49,7 @@ function MobileNavigationMenu(props: Props) {
               <Link key={item.href} href={item.href} passHref>
                 <MenuContentText
                   variant="h6"
-                  fontWeight={500}
+                  fontWeight={item.href === router.asPath ? 700 : 500}
                   color="rgb(0, 50, 91)"
                   variants={{
                     closed: {

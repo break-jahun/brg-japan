@@ -6,9 +6,10 @@ import useIsDesktop from 'brg-japan/modules/hooks/useIsDesktop';
 import useMenuData from 'brg-japan/modules/hooks/useMenuData';
 import Link from 'next/link';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import MobileNavigationMenu from 'brg-japan/components/Layout/MobileNavigationMenu';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 function NavigationBar() {
   const isDesktop = useIsDesktop();
@@ -18,7 +19,9 @@ function NavigationBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [logoOn, setLogoOn] = useState(false);
 
-  const handleToggleMobileMenu = () => {
+  const router = useRouter();
+
+  const handleToggleMobileMenu = useCallback(() => {
     setMobileMenuOpen((prev) => !prev);
     if (mobileMenuOpen) {
       setTimeout(() => {
@@ -27,7 +30,21 @@ function NavigationBar() {
     } else {
       setLogoOn((prev) => !prev);
     }
-  };
+  }, [mobileMenuOpen]);
+
+  const handleCloseMenu = useCallback(() => {
+    if (mobileMenuOpen) {
+      handleToggleMobileMenu();
+    }
+  }, [handleToggleMobileMenu, mobileMenuOpen]);
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', handleCloseMenu);
+
+    return () => {
+      router.events.off('routeChangeStart', handleCloseMenu);
+    };
+  }, [handleCloseMenu, router.events]);
 
   return (
     <>
