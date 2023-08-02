@@ -56,6 +56,7 @@ function PriceInfoCard(props: Props) {
           open={tooltipOpen}
         >
           <Button
+            style={{ color: 'black' }}
             {...(isDesktop && {
               onMouseOver: handleTooltipOpen,
               onMouseLeave: handleTooltipClose,
