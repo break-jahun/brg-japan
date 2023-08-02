@@ -22,7 +22,7 @@ export const queryClient = new QueryClient({
   },
 });
 
-// trigger.
+// trigger..
 function App({ Component, pageProps }: AppProps) {
   return (
     <>
