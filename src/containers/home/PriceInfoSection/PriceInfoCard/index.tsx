@@ -4,6 +4,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import { Button, ClickAwayListener } from '@mui/base';
 import { useState } from 'react';
 import useIsDesktop from 'brg-japan/modules/hooks/useIsDesktop';
+import { HStack } from '@/common/components/HStack';
 
 type Props = {
   title: string;
@@ -46,29 +47,31 @@ function PriceInfoCard(props: Props) {
       <Title>{title}</Title>
       <Price>{price}</Price>
       <Subtitle>カード1枚あたり</Subtitle>
-      <ClickAwayListener onClickAway={handleTooltipClose}>
-        <Tooltip
-          title="営業日の起算時点は、グレーディングセンターに到着した日ではなく、
-        「日本現地集荷地（もしくは事務所）」に到着した日を基準とします。"
-          disableFocusListener
-          disableHoverListener
-          disableTouchListener
-          open={tooltipOpen}
-        >
-          <Button
-            style={{ color: 'black' }}
-            {...(isDesktop && {
-              onMouseOver: handleTooltipOpen,
-              onMouseLeave: handleTooltipClose,
-            })}
-            {...(!isDesktop && {
-              onClick: handleClickTooltip,
-            })}
+      <HStack alignItems="flex-end" gap="8px">
+        {description}
+        <ClickAwayListener onClickAway={handleTooltipClose}>
+          <Tooltip
+            title="営業日の起算時点は日本集荷地に到着した日時基準です。"
+            disableFocusListener
+            disableHoverListener
+            disableTouchListener
+            open={tooltipOpen}
           >
-            {description}
-          </Button>
-        </Tooltip>
-      </ClickAwayListener>
+            <Button
+              style={{ color: 'black' }}
+              {...(isDesktop && {
+                onMouseOver: handleTooltipOpen,
+                onMouseLeave: handleTooltipClose,
+              })}
+              {...(!isDesktop && {
+                onClick: handleClickTooltip,
+              })}
+            >
+              <InfoIcon sx={{ color: '#d9d8d4' }} fontSize="small" />
+            </Button>
+          </Tooltip>
+        </ClickAwayListener>
+      </HStack>
     </VStack>
   );
 }
