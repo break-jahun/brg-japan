@@ -9,7 +9,7 @@ function SocialSnsSection() {
 
   return (
     <VStack
-      paddingY={{ xs: '40px', sm: '80px' }}
+      padding={{ xs: '10px 0px 40px 0px', sm: '20px 0px 80px 0px' }}
       gap="24px"
       alignItems="center"
     >

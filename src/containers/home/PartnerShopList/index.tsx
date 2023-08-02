@@ -3,8 +3,7 @@ import { VStack } from '@/common/components/VStack';
 import { Button } from '@mui/base';
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { keyframes, styled } from '@mui/system';
-import DeskTopPartnerShopList from 'brg-japan/containers/home/PartnerShopList/DeskTopPartnerShopList';
-import MobilePartnerShopList from 'brg-japan/containers/home/PartnerShopList/MobilePartnerShopList';
+import ItemListSection from 'brg-japan/containers/home/PartnerShopList/ItemListSection';
 import PartnerShopInfoCard from 'brg-japan/containers/home/PartnerShopList/PartnerShopInfoCard';
 import { PartnerShopData } from 'brg-japan/containers/home/PartnerShopList/shared/PartnershopData';
 import HomeSharedTitle from 'brg-japan/containers/home/shared/HomeSharedTitle';
@@ -38,8 +37,21 @@ function PartnerShopList() {
         </TitleAndDescription>
 
         <Box marginTop="24px">
-          {isDesktop && <DeskTopPartnerShopList data={onlineShopList} />}
-          {!isDesktop && <MobilePartnerShopList data={onlineShopList} />}
+          {isDesktop ? (
+            <VStack alignItems="center" gap="24px">
+              <ItemListSection data={onlineShopList.slice(0, 2)} />
+              <Box>
+                <PartnerShopInfoCard
+                  address={onlineShopList[2].address}
+                  image={onlineShopList[2].image}
+                  name={onlineShopList[2].name}
+                  phone={onlineShopList[2].phone}
+                />
+              </Box>
+            </VStack>
+          ) : (
+            <ItemListSection data={onlineShopList} />
+          )}
         </Box>
       </VStack>
       <VStack>
@@ -47,8 +59,7 @@ function PartnerShopList() {
           brg公式パートナーショップに訪問し、現地で受付する方式です。です。
         </TitleAndDescription>
         <Box marginTop="24px">
-          {isDesktop && <DeskTopPartnerShopList data={offlineShopList} />}
-          {!isDesktop && <MobilePartnerShopList data={offlineShopList} />}
+          <ItemListSection data={offlineShopList} />
         </Box>
       </VStack>
     </VStack>
