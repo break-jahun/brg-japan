@@ -58,10 +58,10 @@ function HomeSearchContent(props: Props) {
               }}
             >
               <Box>
-                <ColumnText>주문번호</ColumnText>
+                <ColumnText>注文番号</ColumnText>
               </Box>
               <Box>
-                <ColumnText>주문건 위치</ColumnText>
+                <ColumnText>注文の場所</ColumnText>
               </Box>
               <Divider />
               <Divider />
@@ -107,12 +107,12 @@ function getOrderLocation({
   trackingNumOut?: string;
 }) {
   if (!trackingNumIn && !trackingNumOut) {
-    return '집하지(입고)';
+    return 'Receiving the package';
   }
   if (!!trackingNumIn && !!trackingNumOut) {
-    return '집하지(출고)';
+    return 'Delivery by courier';
   }
-  return 'brg 그레이딩 센터';
+  return 'BRG Grading Center';
 }
 
 export default HomeSearchContent;
