@@ -1,5 +1,9 @@
 import { VStack } from '@/common/components/VStack';
-import { Typography, styled } from '@mui/material';
+import { Box, Tooltip, Typography, styled } from '@mui/material';
+import InfoIcon from '@mui/icons-material/Info';
+import { Button, ClickAwayListener } from '@mui/base';
+import { useState } from 'react';
+import useIsDesktop from 'brg-japan/modules/hooks/useIsDesktop';
 
 type Props = {
   title: string;
@@ -9,6 +13,22 @@ type Props = {
 
 function PriceInfoCard(props: Props) {
   const { title, price, description } = props;
+
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+
+  const isDesktop = useIsDesktop();
+
+  const handleClickTooltip = () => {
+    setTooltipOpen((prev) => !prev);
+  };
+
+  const handleTooltipClose = () => {
+    setTooltipOpen(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setTooltipOpen(true);
+  };
 
   return (
     <VStack
@@ -26,14 +46,35 @@ function PriceInfoCard(props: Props) {
       <Title>{title}</Title>
       <Price>{price}</Price>
       <Subtitle>カード1枚あたり</Subtitle>
-      {description}
+      <ClickAwayListener onClickAway={handleTooltipClose}>
+        <Tooltip
+          title="営業日の起算時点は、グレーディングセンターに到着した日ではなく、
+        「日本現地集荷地（もしくは事務所）」に到着した日を基準とします。"
+          disableFocusListener
+          disableHoverListener
+          disableTouchListener
+          open={tooltipOpen}
+        >
+          <Button
+            {...(isDesktop && {
+              onMouseOver: handleTooltipOpen,
+              onMouseLeave: handleTooltipClose,
+            })}
+            {...(!isDesktop && {
+              onClick: handleClickTooltip,
+            })}
+          >
+            {description}
+          </Button>
+        </Tooltip>
+      </ClickAwayListener>
     </VStack>
   );
 }
 
 const Title = styled(Typography)({
   fontSize: '24px',
-  fontWeight: 400,
+  fontWeight: 700,
   lineHeight: 1.5,
 });
 
@@ -50,6 +91,7 @@ const Subtitle = styled(Typography)({
   fontWeight: 400,
   lineHeight: 1.6667,
   letterSpacing: '0.4px',
+  color: '#616161',
 });
 
 export default PriceInfoCard;

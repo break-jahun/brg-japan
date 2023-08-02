@@ -13,36 +13,55 @@ function PriceInfoSection() {
       bgcolor="#F5F5F5"
       alignItems="center"
     >
-      <VStack gap="24px" width={{ xs: '100%', sm: '632px' }}>
+      <VStack
+        gap="40px"
+        width={{ xs: '100%', sm: '632px' }}
+        alignItems="center"
+      >
         <HomeSharedTitle>プライシング</HomeSharedTitle>
         <Box
-          display="flex"
-          flexDirection={{ xs: 'column', sm: 'row' }}
+          display="grid"
+          gridTemplateColumns={{ xs: '1fr', sm: '1fr 1fr' }}
           gap="40px"
+          width="100%"
         >
-          <Box flex={1}>
-            <PriceInfoCard
-              title="レギュラ"
-              price="2,480円＋税"
-              description={
-                <VStack>
-                  <Description>*大体15営業日</Description>
-                </VStack>
-              }
-            />
-          </Box>
-          <Box flex={1}>
-            <PriceInfoCard
-              title="バリュ"
-              price="1,980円＋税"
-              description={
-                <VStack>
-                  <DescriptionBold>*最少50枚</DescriptionBold>
-                  <Description>*大体25営業日</Description>
-                </VStack>
-              }
-            />
-          </Box>
+          <PriceInfoCard
+            title="レギュラ"
+            price="2,480円＋税"
+            description={
+              <VStack>
+                <Description>*大体15営業日</Description>
+              </VStack>
+            }
+          />
+          <PriceInfoCard
+            title="バリュ"
+            price="1,980円＋税"
+            description={
+              <VStack>
+                <DescriptionBold>*最少50枚</DescriptionBold>
+                <Description>*大体25営業日</Description>
+              </VStack>
+            }
+          />
+          <PriceInfoCard
+            title="株主"
+            price="1,380円＋税"
+            description={
+              <VStack>
+                <Description>*大体15営業日</Description>
+              </VStack>
+            }
+          />
+          <PriceInfoCard
+            title="クロスオーバー"
+            price="2,480円＋税"
+            description={
+              <VStack>
+                <Description>*大体15営業日</Description>
+              </VStack>
+            }
+          />
         </Box>
       </VStack>
     </VStack>

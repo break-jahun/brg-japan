@@ -19,7 +19,7 @@ function DeskTopPartnerShopList(props: Props) {
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
+          gridTemplateColumns: '1fr 1fr',
           gap: '24px',
         }}
       >
