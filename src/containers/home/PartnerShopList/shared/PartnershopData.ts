@@ -5,7 +5,7 @@ export const PartnerShopData = [
     address: '〒101-0021 東京都千代⽥区外神⽥３丁⽬１４−9, Azuma Building, 5F',
     phone: '📞 013-5930-2200',
     type: 'OFFLINE',
-    link: '',
+    link: '/partner-shop',
   },
   {
     name: 'magi中野ブロードウェイ店',
@@ -13,7 +13,7 @@ export const PartnerShopData = [
     address: '〒164-0001 東京都中野区中野５丁目５２−１５ 2F',
     phone: '📞 013-5930-2200',
     type: 'OFFLINE',
-    link: '',
+    link: '/partner-shop',
   },
   {
     name: 'たいむましん',
@@ -21,7 +21,7 @@ export const PartnerShopData = [
     address: '〒348-0065 埼玉県羽生市大字藤井下組171',
     phone: '📞️ 048-598-6557',
     type: 'OFFLINE',
-    link: '',
+    link: '/partner-shop',
   },
   {
     name: 'Cardshop Serra',
@@ -37,7 +37,7 @@ export const PartnerShopData = [
     address: '博多区博多駅前１丁目３−２２ かき善ビル４階',
     phone: '📞 092-710-2292',
     type: 'OFFLINE',
-    link: '',
+    link: '/partner-shop',
   },
   {
     name: 'TCG専門店CANTRIP',
@@ -53,7 +53,7 @@ export const PartnerShopData = [
     address: '〒671-0251 兵庫県姫路市花田町上原田2-1 ビッグエムワン2F',
     phone: '📞 079-240-5944',
     type: 'OFFLINE',
-    link: '',
+    link: '/partner-shop',
   },
   {
     name: 'BEEP Akihabara',
@@ -61,7 +61,7 @@ export const PartnerShopData = [
     address: '〒348-0065 埼玉県羽生市藤井下組171',
     phone: '📞 0120-549-542',
     type: 'OFFLINE',
-    link: '',
+    link: '/partner-shop',
   },
   {
     name: 'GRADINGSERVICES JAPAN',

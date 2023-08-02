@@ -5,8 +5,6 @@ import HomeSharedTitle from 'brg-japan/containers/home/shared/HomeSharedTitle';
 import useIsDesktop from 'brg-japan/modules/hooks/useIsDesktop';
 
 function SocialSnsSection() {
-  const isDesktop = useIsDesktop();
-
   return (
     <VStack
       padding={{ xs: '10px 0px 40px 0px', sm: '20px 0px 80px 0px' }}

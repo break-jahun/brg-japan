@@ -24,7 +24,7 @@ function PartnerShopList() {
 
   return (
     <VStack
-      paddingY="80px"
+      paddingY={{ xs: '40px', sm: '80px' }}
       alignItems="center"
       width={isMobileAndTablet ? '100%' : '704px'}
       margin="auto"
