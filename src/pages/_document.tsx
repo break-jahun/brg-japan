@@ -33,6 +33,7 @@ export default class MyDocument extends Document {
           />
           <link rel="icon" href="/favicon.ico" />
           <link rel="canonical" href="https://jp.brgcard.com" />
+          <link rel="manifest" href="/manifest.json" />
           <meta name="theme-color" content="#000000" />
           <meta
             name="description"
@@ -60,7 +61,13 @@ export default class MyDocument extends Document {
           <meta property="og:image" content="/og.png" />
           <link rel="apple-touch-icon" href="/logo192.png" />
           <meta property="og:url" content="https://jp.brgcard.com" />
-          <link rel="manifest" href="/manifest.json" />
+          <meta property="twitter:image" content="/og.png" />
+          <meta property="twitter:card" content="/og.png" />
+          <meta property="twitter:title" content="break │ brg grading" />
+          <meta
+            property="twitter:description"
+            content="Trading card service platform / break grading(brg)"
+          />
         </Head>
         <body>
           <Main />
